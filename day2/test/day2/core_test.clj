@@ -4,24 +4,24 @@
 
 (deftest follow-test
   (testing "Empty instruction should not move"
-    (is (= [1 1] (follow [1 1] ""))))
+    (is (= 5 (follow 5 ""))))
   (testing "Single move"
     (testing "Move left"
-      (is (= [1 0] (follow [1 1] "L"))))
+      (is (= 4 (follow 5 "L"))))
     (testing "Move right"
-      (is (= [1 2] (follow [1 1] "R"))))
+      (is (= 6 (follow 5 "R"))))
     (testing "Move up"
-      (is (= [0 1] (follow [1 1] "U"))))
+      (is (= 2 (follow 5 "U"))))
     (testing "Move down"
-      (is (= [2 1] (follow [1 1] "D"))))
+      (is (= 8 (follow 5 "D"))))
     (testing "Move left cannot"
-      (is (= [0 0] (follow [0 0] "L"))))
+      (is (= 0 (follow 0 "L"))))
     (testing "Move right cannot"
-      (is (= [0 2] (follow [0 2] "R"))))
+      (is (= 3 (follow 3 "R"))))
     (testing "Move up cannot"
-      (is (= [0 0] (follow [0 0] "U"))))
+      (is (= 0 (follow 0 "U"))))
     (testing "Move down cannot"
-      (is (= [2 0] (follow [2 0] "D")))))
+      (is (= 7 (follow 7 "D")))))
   (testing "Multi move"
-    (is (= [0 0] (follow [1 1] "UL")))
-    (is (= [0 0] (follow [1 1] "ULLLLL")))))
+    (is (= 1 (follow 5 "UL")))
+    (is (= 1 (follow 5 "ULLLLL")))))
